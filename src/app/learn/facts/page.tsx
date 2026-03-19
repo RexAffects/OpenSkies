@@ -48,6 +48,38 @@ WHO'S DOING IT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+WHAT INDEPENDENT TESTING HAS FOUND
+
+• Direct atmospheric sampling from a NOAA flying lab (University of Maryland Cessna, BWI to Albany) found aluminum oxide and barium sulfate nanoparticles at altitude — confirmed via SEM and TEM analysis.
+  Source: GeoengineeringWatch.org atmospheric sampling missions
+
+• KSLA News 12 had samples tested at an independent lab: barium at 6.8 parts per million — more than 3x the EPA toxic level.
+  Source: KSLA News 12 investigation, Southwest Arkansas (broadcast on local TV)
+
+• State-certified lab testing of rainwater found aluminum at 3,450 parts per billion.
+  Source: State-certified laboratory analysis
+
+• The Air Force conducted an 8-year study (1993-2001) finding aluminum nanoparticles suppress white blood cells' ability to fight airborne infections. They knew.
+  Source: USAF research study "In vitro toxicity of aluminum nanoparticles in rat alveolar macrophages"
+
+• By 1977, 239 open-air biological tests had been conducted over unknowing US populations.
+  Source: Congressional hearing records
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WHAT MILITARY INSIDERS HAVE SAID
+
+• Kristen Meghan Edwards (USAF, 9 years active duty, bio-environmental engineer): "When you start to find constituents coming on the base that you're trying to remove from the base, that was a red flag for me." She tracked unauthorized heavy metals being brought onto Air Force bases.
+
+• Brigadier General Charles Jones (USAF retired, 42nd Tactical Recon Squadron) was assigned to pinpoint contrail altitudes across Europe. States modern trails are "much different from" normal contrails.
+
+• Major General Richard Roellig (USAF retired, 34 years, top secret clearance, 10 years at Raytheon): "You only are told what you need to know."
+
+• Project Cirrus (1947): US military hurricane manipulation. Operation Popeye: US weaponized weather in Vietnam (declassified).
+  Source: Declassified government records; Congressional record
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 WHAT THE GOVERNMENT HAS SAID
 
 • EPA Administrator Lee Zeldin (2025): "Americans have urgent and important questions about geoengineering and contrails. The American public deserves and expects honesty and transparency from their government. For years, people who asked questions in good faith were dismissed, even vilified. That era is over."
@@ -177,7 +209,66 @@ export default function FactsPage() {
         </div>
       </section>
 
-      {/* Section 3 */}
+      {/* Section 3: Testing Evidence */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold border-b border-border pb-2">
+          What independent testing has found
+        </h2>
+        <div className="mt-4 space-y-4">
+          <Fact
+            claim="Direct atmospheric sampling from a NOAA flying lab (University of Maryland twin-engine Cessna, BWI to Albany) found aluminum oxide and barium sulfate nanoparticles at altitude — confirmed via scanning electron microscopy (SEM) and transmission electron microscopy (TEM)."
+            source="GeoengineeringWatch.org atmospheric sampling missions with SEM/TEM lab analysis"
+          />
+          <Fact
+            claim="A second sampling mission on a Learjet (San Diego to Bay Area) using nanoparticle meters found elevated concentrations confined to the induced cloud layer — clean air above and below. Particles measured at 40-60 nanometers."
+            source="GeoengineeringWatch.org West Coast sampling mission, peer-reviewed lab methodology"
+          />
+          <Fact
+            claim="Independent lab testing aired on KSLA News 12 found barium at 6.8 parts per million in atmospheric fallout samples — more than 3 times the EPA toxic level."
+            source="KSLA News 12 investigation, Southwest Arkansas — broadcast on local television"
+          />
+          <Fact
+            claim="State-certified lab testing of rainwater found aluminum at 3,450 parts per billion — described as 'highly toxic rain.'"
+            source="State-certified laboratory analysis of precipitation samples"
+          />
+          <Fact
+            claim="The Air Force conducted an 8-year study (1993-2001) titled 'In vitro toxicity of aluminum nanoparticles in rat alveolar macrophages' — finding that aluminum nanoparticle exposure suppresses the ability of white blood cells to defend against airborne infections. They knew."
+            source="United States Air Force research study, 1993-2001"
+          />
+          <Fact
+            claim="By 1977, 239 open-air biological tests had been conducted over unknowing US populations — documented in Congressional hearings."
+            source="Congressional hearing records, documented historical fact"
+          />
+        </div>
+      </section>
+
+      {/* Section 4: Military Insiders */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold border-b border-border pb-2">
+          What military insiders have said
+        </h2>
+        <div className="mt-4 space-y-4">
+          <Quote
+            text="When you start to find constituents coming on the base that you're trying to remove from the base and engineer out through different industrial processes, that was a red flag for me."
+            speaker="Kristen Meghan Edwards, USAF veteran (9 years active duty)"
+            context="Bio-environmental engineer and whistleblower who tracked unauthorized heavy metals being brought onto Air Force bases via AF Form 3952 hazardous materials acquisition system"
+          />
+          <Fact
+            claim="Brigadier General Charles Jones (USAF retired) was assigned to the 42nd Tactical Reconnaissance Squadron to pinpoint the exact altitudes of all jet engine contrails across Europe, North Africa, and the Eastern Atlantic. He states definitively that modern trails are 'much different from' normal contrails."
+            source="Brig. Gen. Charles Jones, USAF retired, 1953-1962 service"
+          />
+          <Fact
+            claim="Major General Richard Roellig (USAF retired, 34-year career, top secret clearance, 10 years at Raytheon) began observing abnormal contrails near Davis-Monthan Air Force Base in Tucson, Arizona in 2017. He confirmed from insider knowledge that classified programs are compartmentalized — 'You only are told what you need to know.'"
+            source="Maj. Gen. Richard Roellig, USAF retired, weapons systems acquisition"
+          />
+          <Fact
+            claim="Project Cirrus (1947): The US military began hurricane manipulation programs. Operation Popeye: The US weaponized weather to create monsoons during the Vietnam War (declassified). Both are confirmed government programs."
+            source="Declassified government records; Congressional record"
+          />
+        </div>
+      </section>
+
+      {/* Section 5 */}
       <section className="mt-10">
         <h2 className="text-xl font-bold border-b border-border pb-2">
           What the government has said

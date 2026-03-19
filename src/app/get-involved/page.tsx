@@ -18,33 +18,77 @@ const frontlineOrgs = [
       "Coalition of attorneys (Nicole Pearson, Blake Horwitz, Tom Renz) building toward the first federal lawsuit against geoengineering. Currently collecting court-admissible evidence, assembling expert witnesses, and seeking whistleblowers.",
     action: "Donate to fund the federal lawsuit",
     taxDeductible: false,
+    resources: [],
   },
   {
     name: "ICAN (Informed Consent Action Network)",
     url: "https://icandecide.org",
     type: "FOIA & legal",
     description:
-      "Filing FOIA requests that have uncovered NSF-funded SAI research described as the \"holy grail\" of geoengineering. Pursuing withheld government documents through legal channels.",
+      "The FOIA bulldozer. Their legal team has forced disclosure of documents revealing the NSF funded a $400K \"holy grail\" grant for SAI aerosol targeting research at Cornell and Indiana University. They also exposed NOAA's SABRE program — a government stratospheric aerosol injection research program ramping up since 2021. Currently filing DOE FOIA requests and challenging British government geoengineering experiments.",
     action: "Donate to support FOIA legal work",
     taxDeductible: true,
+    resources: [
+      {
+        label: "NSF \"Holy Grail\" FOIA discovery",
+        url: "https://icandecide.org/press-release/ican-documents-show-us-government-funded-holy-grail-of-geoengineering-research/",
+      },
+      {
+        label: "NOAA SABRE program exposed",
+        url: "https://icandecide.org/press-release/ican-obtains-evidence-showing-the-government-is-ramping-up-geoengineering-research/",
+      },
+    ],
   },
   {
     name: "Stop Geoengineering MN",
     url: "https://stopgeoengineeringmn.squarespace.com/donate",
     type: "State-level legal",
     description:
-      "100% of donations go directly to legal efforts challenging weather modification in Minnesota. Grassroots organization with full financial transparency.",
+      "100% of donations go directly to legal efforts challenging weather modification in Minnesota. Sued the Air Force in federal court for information on weather modification programs and government efforts to restrict public knowledge. Grassroots organization with full financial transparency.",
     action: "Donate (100% goes to legal efforts)",
     taxDeductible: true,
+    resources: [],
   },
   {
     name: "Geoengineering Watch",
     url: "https://geoengineeringwatch.org",
     type: "Awareness & research",
     description:
-      "One of the longest-running organizations documenting weather modification. Dane Wigington has testified as expert witness for state geoengineering ban bills including Wyoming.",
+      "The archive. 20+ years documenting weather modification with the largest public collection of evidence in one place. Lead researcher Dane Wigington has testified as expert witness for state geoengineering ban bills including Wyoming. Their documentary \"The Dimming\" has over 25 million views.",
     action: "Support their research and outreach",
     taxDeductible: false,
+    resources: [
+      {
+        label: "175+ weather modification patents",
+        url: "https://geoengineeringwatch.org/links-to-geoengineering-patents/",
+      },
+      {
+        label: "Government document library (Senate reports, CIA, NASA, DOD)",
+        url: "https://geoengineeringwatch.org/documents-2/",
+      },
+      {
+        label: "Lab test results (rain, snow, soil — aluminum, barium, strontium)",
+        url: "https://geoengineeringwatch.org/lab-tests-2/",
+      },
+      {
+        label: "\"The Dimming\" documentary (25M+ views)",
+        url: "https://geoengineeringwatch.org/the-dimming-full-length-climate-engineering-documentary/",
+      },
+      {
+        label: "How to test your own water and soil",
+        url: "https://geoengineeringwatch.org/how-to-test-2/",
+      },
+    ],
+  },
+  {
+    name: "Carnicom Institute",
+    url: "https://www.carnicominstitute.org",
+    type: "Independent research",
+    description:
+      "Independent research organization conducting scientific analysis of environmental samples related to aerosol operations. Long-running environmental and biological research program.",
+    action: "Support independent research",
+    taxDeductible: false,
+    resources: [],
   },
 ];
 
@@ -278,6 +322,14 @@ export default function GetInvolvedPage() {
                 elevated silver, barium, strontium, or aluminum. Document
                 results and share them.
               </p>
+              <a
+                href="https://geoengineeringwatch.org/how-to-test-2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-block text-xs text-primary hover:underline"
+              >
+                How to test (Geoengineering Watch guide) &rarr;
+              </a>
             </CardContent>
           </Card>
           <Link href="/learn/facts">
@@ -326,7 +378,7 @@ export default function GetInvolvedPage() {
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <h3 className="font-semibold text-sm">{org.name}</h3>
                     <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
                       {org.type}
@@ -340,6 +392,21 @@ export default function GetInvolvedPage() {
                   <p className="mt-2 text-xs text-muted-foreground">
                     {org.description}
                   </p>
+                  {org.resources.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                      {org.resources.map((resource) => (
+                        <a
+                          key={resource.url}
+                          href={resource.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] text-primary hover:underline"
+                        >
+                          {resource.label} &rarr;
+                        </a>
+                      ))}
+                    </div>
+                  )}
                   <p className="mt-2 text-xs font-medium text-foreground">
                     {org.action}
                   </p>

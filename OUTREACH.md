@@ -14,6 +14,7 @@ People and organizations to contact when the project is ready for public launch.
 - **The GeoFight** (thegeofight.com) — Nicole Pearson, Blake Horwitz, Tom Renz. Building federal lawsuit. Would benefit from SkyLedger as an evidence tool.
 - **ICAN** (icandecide.org) — Filing FOIAs, uncovering funded SAI research.
 - **Dane Wigington / Geoengineering Watch** — Testified as expert witness for state bills. Large audience.
+- **Stop Geoengineering MN** (stopgeoengineeringmn.squarespace.com) — Minnesota grassroots org, 100% of donations go to legal efforts. Already listed on our Get Involved page as a front-line org. Natural partner.
 
 ## Social Media / Influencers
 
@@ -21,6 +22,12 @@ People and organizations to contact when the project is ready for public launch.
 - Geoengineering Instagram accounts (Rex to identify specific ones)
 - Weather modification awareness accounts on X/Twitter
 - Independent journalists covering the topic
+
+## From "The Dimming" Documentary
+
+- **Kristen Meghan Edwards** — USAF veteran (9 years active duty), bio-environmental engineer. Whistleblower who found unauthorized heavy metals being brought onto Air Force bases. Now VA industrial hygienist. Extremely credible firsthand witness.
+- **Major General Richard Roellig** (USAF retired) — 34-year career, two-star general, weapons systems acquisition, top secret clearance, 10 years at Raytheon. Began observing abnormal trails near Davis-Monthan AFB in 2017.
+- **Brigadier General Charles Jones** (USAF retired) — Was assigned to pinpoint exact altitudes of all jet contrails in Europe/North Africa. States definitively modern trails are different from normal contrails.
 
 ## Witnesses from the Hearing
 
