@@ -639,7 +639,7 @@ function LearnMoreSection() {
             d="m8.25 4.5 7.5 7.5-7.5 7.5"
           />
         </svg>
-        Learn More: Why These Altitude Bands?
+        Learn More: How We Flag &amp; Score Aircraft
       </button>
 
       {expanded && (
@@ -737,26 +737,129 @@ function LearnMoreSection() {
             </p>
           </div>
 
+          {/* Tags Explained */}
+          <div className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-950/20 p-3">
+            <p className="font-semibold text-foreground mb-2">
+              Tags: WX MOD, Watch, Interest
+            </p>
+            <p>
+              Every aircraft gets automatically scored based on how closely it
+              matches the profile of a weather modification flight. The tags help
+              you cut through the noise and focus on what matters.
+            </p>
+            <div className="mt-3 space-y-2">
+              <div className="flex items-start gap-2">
+                <span className="shrink-0 mt-0.5 inline-block px-1.5 py-0.5 rounded bg-red-500 text-white text-[10px] font-bold">
+                  WX MOD
+                </span>
+                <p>
+                  <strong>Known operator.</strong> The aircraft is registered to
+                  a company we&apos;ve confirmed does weather modification
+                  (Weather Modification International, Idaho Power, Rainmaker,
+                  Make Sunsets, etc.). These are flagged from FAA registration
+                  records. Automatic top priority.
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="shrink-0 mt-0.5 inline-block px-1.5 py-0.5 rounded bg-red-100 text-red-800 text-[10px] font-bold border border-red-300">
+                  Watch
+                </span>
+                <p>
+                  <strong>Score 3+.</strong> Multiple signals match the cloud
+                  seeding profile. Worth clicking to investigate the owner.
+                  These are non-commercial, small aircraft at seeding altitude
+                  flying slow &mdash; the exact profile of an active cloud
+                  seeding flight.
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="shrink-0 mt-0.5 inline-block px-1.5 py-0.5 rounded bg-yellow-100 text-yellow-800 text-[10px] font-bold border border-yellow-300">
+                  Interest
+                </span>
+                <p>
+                  <strong>Score 2-3.</strong> Some signals present but not the
+                  full profile. Could be a private plane, a training flight, or
+                  something worth a second look.
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="shrink-0 mt-0.5 text-muted-foreground text-[10px]">
+                  No tag
+                </span>
+                <p>
+                  <strong>Score under 2.</strong> Likely a commercial airline or
+                  normal traffic. An American Airlines flight at 8,000 ft going
+                  from Nashville to New York scores low because it has an
+                  airline callsign &mdash; it&apos;s just climbing through the
+                  altitude band, not operating there.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* How Scoring Works */}
+          <div className="rounded-lg border border-border bg-muted/50 p-3">
+            <p className="font-semibold text-foreground mb-2">
+              How the Score Is Calculated
+            </p>
+            <p className="mb-3">
+              Each aircraft is scored on 5 signals. The more signals that match,
+              the higher the score and the more likely it&apos;s worth
+              investigating.
+            </p>
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span>At cloud seeding altitude (3-20K ft)</span>
+                <span className="font-mono font-bold">+1</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Non-commercial (no airline callsign)</span>
+                <span className="font-mono font-bold">+1</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Small prop or turboprop aircraft type</span>
+                <span className="font-mono font-bold">+1.5</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Flying slow at seeding altitude (&lt;250 kts)</span>
+                <span className="font-mono font-bold">+0.5</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Using tail number as callsign (N-number)</span>
+                <span className="font-mono font-bold">+0.5</span>
+              </div>
+              <div className="flex items-center justify-between border-t border-border pt-1.5 mt-1.5">
+                <span className="font-medium">Maximum possible</span>
+                <span className="font-mono font-bold">4.5</span>
+              </div>
+            </div>
+            <p className="mt-3">
+              <strong>Example:</strong> A Beechcraft King Air (turboprop) at
+              9,000 ft flying 160 knots with callsign N400WM scores 4.5 and
+              gets a red &quot;Watch&quot; tag. A Delta 737 at 8,000 ft going
+              450 knots with callsign DAL1234 scores 0. Both are at the same
+              altitude, but the scoring separates them instantly.
+            </p>
+          </div>
+
           {/* Important context */}
           <div className="rounded-lg border border-border bg-muted/50 p-3">
             <p className="font-semibold text-foreground mb-2">
               Important Context
             </p>
             <p>
-              These altitude bands are tools for prioritizing attention, not
-              drawing conclusions. An aircraft at cloud seeding altitude owned by
-              Weather Modification International is a much stronger signal than
-              a random Cessna at the same altitude. Always check the owner by
-              clicking on the aircraft.
+              Scoring is a tool for prioritizing attention, not drawing
+              conclusions. A high score means the aircraft matches the profile
+              &mdash; it does not prove it&apos;s doing anything. Always click
+              to check the owner. A &quot;Watch&quot; aircraft owned by Weather
+              Modification International is a much stronger signal than a
+              &quot;Watch&quot; aircraft owned by a flight school.
             </p>
             <p className="mt-2">
-              <strong>Sources:</strong> Weather Modification International
-              published operations data, NOAA Weather Modification Activity
-              Reports (15 CFR Part 908), Bureau of Reclamation cloud seeding
-              program evaluations, Texas Weather Modification Advisory Board
-              annual reports, North Dakota Atmospheric Resource Board
-              publications, and standard atmospheric science textbooks on
-              contrail formation physics.
+              <strong>Sources:</strong> Aircraft types from FAA registry and
+              ADS-B type codes. Operator data from NOAA reports, state permits,
+              and company filings. Altitude ranges from published operational
+              data and atmospheric science research.
             </p>
           </div>
         </div>
