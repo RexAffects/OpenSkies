@@ -39,8 +39,8 @@ const learnTopics = [
   {
     title: "Who are the companies involved?",
     description:
-      "Weather Modification International, Rainmaker, Make Sunsets, Idaho Power — the operators, the funders, and the contracts.",
-    href: "/about",
+      "Weather Modification International, Rainmaker, Make Sunsets, Stardust Solutions — the operators, the funders, and the connections. Full profiles.",
+    href: "/learn/operators",
   },
   {
     title: "What did Congress say?",

@@ -19,6 +19,7 @@ export function FlightsView() {
     longitude: number;
   } | null>(null);
   const [flightTrails, setFlightTrails] = useState<FlightTrail[]>([]);
+  const [radius, setRadius] = useState(50);
 
   const handleTrailsUpdate = useCallback((trails: FlightTrail[]) => {
     setFlightTrails(trails);
@@ -49,14 +50,32 @@ export function FlightsView() {
               {mapCenter ? "Update Location" : "Use My Location"}
             </Button>
           </div>
-          <p className="text-sm text-muted-foreground">
-            See all aircraft currently broadcasting ADS-B within{" "}
-            <span className="font-medium text-foreground">
-              50 nautical miles (~57 miles / ~92 km)
-            </span>{" "}
-            of your location. Click any aircraft to see full details
-            including owner, route, and airports. Data refreshes every 10
-            seconds.
+          <div className="flex items-center gap-3 mt-2">
+            <label className="text-xs text-muted-foreground shrink-0">
+              Radius:
+            </label>
+            <div className="flex gap-1">
+              {[5, 10, 25, 50].map((r) => (
+                <button
+                  key={r}
+                  onClick={() => setRadius(r)}
+                  className={`px-2.5 py-1 text-xs rounded-md border transition-colors ${
+                    radius === r
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-background text-muted-foreground border-border hover:bg-muted"
+                  }`}
+                >
+                  {r} nm
+                </button>
+              ))}
+            </div>
+            <span className="text-xs text-muted-foreground">
+              (~{Math.round(radius * 1.15)} miles)
+            </span>
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Click any aircraft to see full details including owner, route, and
+            airports. Data refreshes every 10 seconds.
           </p>
         </CardHeader>
         <CardContent>
@@ -131,6 +150,7 @@ export function FlightsView() {
                 <div>
                   <FlightLayer
                     mapCenter={mapCenter}
+                    radius={radius}
                     onTrailsUpdate={handleTrailsUpdate}
                     onFlightSelect={(flight) =>
                       setSelectedFlight({

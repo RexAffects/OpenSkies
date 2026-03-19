@@ -28,19 +28,9 @@ export interface FAARegistration {
   operatorNotes: string;
 }
 
-// Known weather modification operators and their identifiers
-const KNOWN_WX_MOD_OPERATORS: Record<string, string> = {
-  "WEATHER MODIFICATION": "Weather Modification International — world's largest cloud seeding operator, based in Fargo, ND",
-  "WEATHER MOD": "Weather Modification International",
-  "NORTH AMERICAN WEATHER": "North American Weather Consultants — cloud seeding operator based in Sandy, UT",
-  "NAWC": "North American Weather Consultants",
-  "IDAHO POWER": "Idaho Power Company — operates $4M/year cloud seeding program",
-  "SEEDING SOLUTIONS": "Cloud seeding operator",
-  "CLOUD SEEDING": "Cloud seeding operator",
-  "RAINMAKER": "Rainmaker — Peter Thiel-backed weather modification startup",
-  "MAKE SUNSETS": "Make Sunsets — stratospheric aerosol injection startup selling 'cooling credits'",
-  "STARDUST SOLUTIONS": "Stardust Solutions — $60M geoengineering startup",
-};
+// Known weather modification operators — built from canonical data in operators.ts
+import { buildWxModLookup } from "@/lib/data/operators";
+const KNOWN_WX_MOD_OPERATORS: Record<string, string> = buildWxModLookup();
 
 /**
  * Look up aircraft registration by tail number using the FAA API.

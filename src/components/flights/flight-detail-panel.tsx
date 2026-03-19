@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getOperatorSlugFromOwnerName } from "@/lib/data/operators";
 
 interface FlightDetail {
   icao_hex: string | null;
@@ -164,16 +166,29 @@ export function FlightDetailPanel({
 
       <CardContent className="space-y-5">
         {/* WX Mod Alert */}
-        {data.owner.is_known_wx_mod && data.owner.operator_notes && (
-          <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 p-3">
-            <p className="text-sm font-medium text-red-800 dark:text-red-200">
-              Known Weather Modification Operator
-            </p>
-            <p className="text-xs text-red-700 dark:text-red-300 mt-1">
-              {data.owner.operator_notes}
-            </p>
-          </div>
-        )}
+        {data.owner.is_known_wx_mod && data.owner.operator_notes && (() => {
+          const operatorSlug = data.owner.name
+            ? getOperatorSlugFromOwnerName(data.owner.name)
+            : null;
+          return (
+            <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 p-3">
+              <p className="text-sm font-medium text-red-800 dark:text-red-200">
+                Known Weather Modification Operator
+              </p>
+              <p className="text-xs text-red-700 dark:text-red-300 mt-1">
+                {data.owner.operator_notes}
+              </p>
+              {operatorSlug && (
+                <Link
+                  href={`/learn/operators/${operatorSlug}`}
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-red-800 dark:text-red-200 hover:underline"
+                >
+                  See who&apos;s behind this operator &rarr;
+                </Link>
+              )}
+            </div>
+          );
+        })()}
 
         {/* Route */}
         <Section title="Route">

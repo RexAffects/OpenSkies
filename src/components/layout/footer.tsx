@@ -40,6 +40,14 @@ export function Footer() {
                   Submit Observation
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/learn/operators"
+                  className="text-sm text-muted-foreground hover:text-foreground"
+                >
+                  Operator Profiles
+                </Link>
+              </li>
             </ul>
           </div>
           <div>

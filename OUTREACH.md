@@ -17,6 +17,7 @@ People and organizations to contact when the project is ready for public launch.
 
 ## Social Media / Influencers
 
+- **Gary Brecka** — Human biologist, large social media following. Has spoken publicly about cloud seeding (video with Sage Brecka). Angle: health impacts of atmospheric spraying tie directly to his health/biohacking audience. Mention: "Saw your video on cloud seeding with Sage — we built a tool that tracks these flights in real time."
 - Geoengineering Instagram accounts (Rex to identify specific ones)
 - Weather modification awareness accounts on X/Twitter
 - Independent journalists covering the topic

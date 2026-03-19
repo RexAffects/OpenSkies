@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { getOperatorSlugFromOwnerName } from "@/lib/data/operators";
 
 interface RegistrationData {
   tailNumber: string;
@@ -122,13 +124,26 @@ export function AircraftLookup() {
                     <DetailRow label="Year" value={result.registration.year} />
                   )}
                   <DetailRow label="Status" value={result.registration.status || "Active"} />
-                  {result.registration.operatorNotes && (
-                    <div className="mt-3 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-                      <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                        {result.registration.operatorNotes}
-                      </p>
-                    </div>
-                  )}
+                  {result.registration.operatorNotes && (() => {
+                    const operatorSlug = result.registration.ownerName
+                      ? getOperatorSlugFromOwnerName(result.registration.ownerName)
+                      : null;
+                    return (
+                      <div className="mt-3 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                        <p className="text-sm text-yellow-800 dark:text-yellow-200">
+                          {result.registration.operatorNotes}
+                        </p>
+                        {operatorSlug && (
+                          <Link
+                            href={`/learn/operators/${operatorSlug}`}
+                            className="mt-2 inline-flex items-center text-xs font-medium text-yellow-800 dark:text-yellow-200 hover:underline"
+                          >
+                            See who&apos;s behind this operator &rarr;
+                          </Link>
+                        )}
+                      </div>
+                    );
+                  })()}
                 </>
               ) : (
                 <p className="text-sm text-muted-foreground">

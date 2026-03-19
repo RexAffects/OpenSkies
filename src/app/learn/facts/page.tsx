@@ -151,16 +151,23 @@ export default function FactsPage() {
         <div className="mt-4 space-y-4">
           <Fact
             claim="Weather Modification International (Fargo, ND) is the world's largest operator with 35+ aircraft. Owned by Patrick & Jim Sweeney."
-            source="FAA Aircraft Registry, company filings"
+            source="See full operator profile"
+            sourceUrl="/learn/operators/weather-modification-international"
           />
           <Fact
             claim="Rainmaker, a Peter Thiel-backed startup, was named during the Congressional hearing in connection with Texas flood concerns."
-            source="Congressional hearing testimony, Sept 16, 2025"
-            sourceUrl="/learn/congressional-hearing"
+            source="See full operator profile"
+            sourceUrl="/learn/operators/rainmaker"
           />
           <Fact
             claim="Make Sunsets is actively releasing sulfur dioxide into the stratosphere and selling 'cooling credits' — the only known private SAI deployer in the U.S."
-            source="Company public statements"
+            source="See full operator profile"
+            sourceUrl="/learn/operators/make-sunsets"
+          />
+          <Fact
+            claim="Stardust Solutions — $75M funded geoengineering startup founded by Israeli nuclear scientists. The most funded geoengineering company in existence."
+            source="See full operator profile"
+            sourceUrl="/learn/operators/stardust-solutions"
           />
           <Fact
             claim="Bill Gates has funded geoengineering research with $8.5M+ since 2007 through FICER, managed by David Keith and Ken Caldeira."

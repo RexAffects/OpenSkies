@@ -158,6 +158,7 @@ const ALTITUDE_TAGS: Record<
 
 interface FlightLayerProps {
   mapCenter: { lat: number; lng: number } | null;
+  radius?: number;
   onFlightSelect?: (flight: FlightData) => void;
   onTrailsUpdate?: (trails: FlightTrail[]) => void;
 }
@@ -166,6 +167,7 @@ const MAX_TRAIL_POINTS = 180;
 
 export function FlightLayer({
   mapCenter,
+  radius = 50,
   onFlightSelect,
   onTrailsUpdate,
 }: FlightLayerProps) {
@@ -194,7 +196,7 @@ export function FlightLayer({
 
     try {
       const res = await fetch(
-        `/api/flights/nearby?lat=${mapCenter.lat}&lon=${mapCenter.lng}&radius=50`
+        `/api/flights/nearby?lat=${mapCenter.lat}&lon=${mapCenter.lng}&radius=${radius}`
       );
       if (!res.ok) throw new Error("Failed to fetch flights");
       const data = await res.json();
@@ -291,7 +293,7 @@ export function FlightLayer({
     } finally {
       setLoading(false);
     }
-  }, [mapCenter]);
+  }, [mapCenter, radius]);
 
   // Apply filters
   const isVisible = useCallback(
