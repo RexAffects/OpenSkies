@@ -7,6 +7,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getOperatorSlugFromOwnerName } from "@/lib/data/operators";
+import { FlagAircraftDialog } from "./flag-aircraft-dialog";
+import { THREAT_LEVELS } from "@/lib/constants";
+
+interface CommunityFlags {
+  flag_count: number;
+  unique_reporters: number;
+  threat_level: "none" | "low" | "medium" | "high";
+  first_flagged_at: string | null;
+  last_flagged_at: string | null;
+}
 
 interface FlightDetail {
   icao_hex: string | null;
@@ -58,6 +68,7 @@ interface FlightDetail {
     squawk: string | null;
     on_ground: boolean;
   } | null;
+  community_flags: CommunityFlags | null;
 }
 
 interface FlightDetailPanelProps {
@@ -189,6 +200,54 @@ export function FlightDetailPanel({
             </div>
           );
         })()}
+
+        {/* Community Flags */}
+        {data.community_flags && data.community_flags.threat_level !== "none" && (
+          <div
+            className={`rounded-lg border p-3 ${
+              data.community_flags.threat_level === "high"
+                ? "bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800"
+                : data.community_flags.threat_level === "medium"
+                  ? "bg-yellow-50 dark:bg-yellow-950/30 border-yellow-200 dark:border-yellow-800"
+                  : "bg-muted/50 border-border"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <p className="text-sm font-medium">
+                {data.community_flags.unique_reporters} community{" "}
+                {data.community_flags.unique_reporters === 1
+                  ? "report"
+                  : "reports"}
+              </p>
+              <Badge
+                className={
+                  THREAT_LEVELS[data.community_flags.threat_level].color
+                }
+              >
+                {THREAT_LEVELS[data.community_flags.threat_level].label}
+              </Badge>
+            </div>
+            {data.community_flags.first_flagged_at && (
+              <p className="text-[11px] text-muted-foreground mt-1">
+                First reported:{" "}
+                {new Date(
+                  data.community_flags.first_flagged_at
+                ).toLocaleDateString()}
+                {data.community_flags.last_flagged_at &&
+                  data.community_flags.first_flagged_at !==
+                    data.community_flags.last_flagged_at && (
+                    <>
+                      {" "}
+                      &middot; Last:{" "}
+                      {new Date(
+                        data.community_flags.last_flagged_at
+                      ).toLocaleDateString()}
+                    </>
+                  )}
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Route */}
         <Section title="Route">
@@ -334,6 +393,17 @@ export function FlightDetailPanel({
             {data.aircraft_type && <span>Type: {data.aircraft_type}</span>}
           </div>
         </div>
+
+        {/* Flag Button */}
+        {data.tail_number && (
+          <FlagAircraftDialog
+            tailNumber={data.tail_number}
+            icaoHex={data.icao_hex}
+            latitude={data.position?.latitude}
+            longitude={data.position?.longitude}
+            altitudeFt={data.position?.altitude_ft}
+          />
+        )}
       </CardContent>
     </Card>
   );

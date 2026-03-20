@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import type { FlightTrail } from "./map-container";
 
@@ -331,11 +331,15 @@ export function FlightLayer({
     [showCloudSeeding, showHighAltitude, showOther, showGround]
   );
 
-  const filteredFlights = allFlights.filter((f) => {
-    if (!isVisible(getAltitudeBand(f.altitude_ft))) return false;
-    if (watchOnly && f.suspicion_score < 2 && !f.is_known_wx_mod) return false;
-    return true;
-  });
+  const filteredFlights = useMemo(
+    () =>
+      allFlights.filter((f) => {
+        if (!isVisible(getAltitudeBand(f.altitude_ft))) return false;
+        if (watchOnly && f.suspicion_score < 2 && !f.is_known_wx_mod) return false;
+        return true;
+      }),
+    [allFlights, isVisible, watchOnly]
+  );
 
   // Update trails for map (only filtered flights)
   useEffect(() => {

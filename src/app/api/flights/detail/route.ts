@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { lookupRoute, lookupAircraftByHex, lookupRouteHexDB } from "@/lib/api/adsbdb";
 import { lookupTailNumber } from "@/lib/api/faa";
 import { fetchAircraftByHex } from "@/lib/api/adsb";
+import { getFlag } from "@/lib/supabase/flags";
 
 /**
  * GET /api/flights/detail?hex=A1B2C3&callsign=UAL123&tail=N12345
@@ -128,8 +129,37 @@ export async function GET(request: NextRequest) {
         }
       : null,
 
+    // Community flags
+    community_flags: null as {
+      flag_count: number;
+      unique_reporters: number;
+      threat_level: string;
+      first_flagged_at: string | null;
+      last_flagged_at: string | null;
+    } | null,
+
     timestamp: Date.now(),
   };
+
+  // Look up community flags (don't block if it fails)
+  const effectiveTail =
+    result.tail_number || tail || liveData?.r || null;
+  if (effectiveTail) {
+    try {
+      const flag = await getFlag(effectiveTail);
+      if (flag && flag.threat_level !== "none") {
+        result.community_flags = {
+          flag_count: flag.flag_count,
+          unique_reporters: flag.unique_reporters,
+          threat_level: flag.threat_level,
+          first_flagged_at: flag.first_flagged_at,
+          last_flagged_at: flag.last_flagged_at,
+        };
+      }
+    } catch (err) {
+      console.error("Error fetching community flags:", err);
+    }
+  }
 
   return Response.json(result);
 }

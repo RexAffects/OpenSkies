@@ -11,16 +11,6 @@ export const metadata: Metadata = {
 
 const frontlineOrgs = [
   {
-    name: "The GeoFight",
-    url: "https://thegeofight.com",
-    type: "Legal action",
-    description:
-      "Coalition of attorneys (Nicole Pearson, Blake Horwitz, Tom Renz) building toward the first federal lawsuit against geoengineering. Currently collecting court-admissible evidence, assembling expert witnesses, and seeking whistleblowers.",
-    action: "Donate to fund the federal lawsuit",
-    taxDeductible: false,
-    resources: [],
-  },
-  {
     name: "ICAN (Informed Consent Action Network)",
     url: "https://icandecide.org",
     type: "FOIA & legal",
@@ -38,6 +28,16 @@ const frontlineOrgs = [
         url: "https://icandecide.org/press-release/ican-obtains-evidence-showing-the-government-is-ramping-up-geoengineering-research/",
       },
     ],
+  },
+  {
+    name: "The GeoFight",
+    url: "https://thegeofight.com",
+    type: "Legal action",
+    description:
+      "Coalition of attorneys (Nicole Pearson, Blake Horwitz, Tom Renz) building toward the first federal lawsuit against geoengineering. Currently collecting court-admissible evidence, assembling expert witnesses, and seeking whistleblowers.",
+    action: "Donate to fund the federal lawsuit",
+    taxDeductible: false,
+    resources: [],
   },
   {
     name: "Stop Geoengineering MN",
@@ -433,7 +433,7 @@ export default function GetInvolvedPage() {
             SkyLedger is not affiliated with any of the organizations listed
             above. We provide these links as a resource for citizens who want
             to take action. We encourage you to research any organization
-            before donating. SkyLedger does not collect donations &mdash; all
+            before donating. SkyLedger does not currently collect donations &mdash; all
             donation links go directly to the organizations listed.
           </p>
         </div>
